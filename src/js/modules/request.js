@@ -4,10 +4,10 @@ function request({term = null, key, resultsBlock}) {
     resultsBlock.textContent = '';
     let url;
     if (term === null) {
-        url = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=25&rating=g`
+        url = `https://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=21&rating=g`;
     }
     else {
-        url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${term}=&limit=25&offset=0&rating=g&lang=en`;
+        url = `https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${term}=&limit=21&offset=0&rating=g&lang=en`;
     }
     getResource(url).then(data => {
         data.data.forEach(elem => {

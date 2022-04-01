@@ -66,9 +66,9 @@ body {
     background: linear-gradient(45deg, #f761a1, #8c1bab);
 }
 .gifs-section {
-
     &__body {
-        margin: -10px -5px;
+        margin: -5px;
+        overflow: hidden;
     }
 
     &__row {
@@ -79,7 +79,7 @@ body {
 
     &__gif {
         display: block;
-        margin: 10px 5px;
+        margin: 5px;
         flex-grow: 1;
         display: flex;
         justify-content: center;

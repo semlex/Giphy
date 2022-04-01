@@ -1,5 +1,4 @@
 const path = require('path');
-const сopy = require('copy-webpack-plugin');
 const miniCss = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
@@ -54,10 +53,6 @@ module.exports = {
       new miniCss({
         filename: 'css/style.css'
       }),
-      new сopy({
-        patterns: [
-          { from: path.join(__dirname, 'src/img'), to: path.join(__dirname, 'dist/img') }
-      ]}),
       new CleanWebpackPlugin()
   ]
 };

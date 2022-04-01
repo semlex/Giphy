@@ -1,13 +1,12 @@
 import request from './request';
 
-function header({headerBody, headerSearchPanel, headerInputField, headerLogo, headerButton, searchResBlock, trendBlock}) {
-        const header = document.querySelector(`.${headerBody}`),
+function header({headerBody, headerSearchPanel, headerInputField, headerLogo, searchResBlock, trendBlock}) {
+    const header = document.querySelector(`.${headerBody}`),
         searchPanel = document.querySelector(`.${headerSearchPanel}`),
         inputField = document.querySelector(`.${headerInputField}`),
         logo = document.querySelector(`.${headerLogo}`),
         searchResultsBlock = document.querySelector(`.${searchResBlock}`),
-        trendingBlock = document.querySelector(`.${trendBlock}`),
-        button = document.querySelector(`.${headerButton}`);
+        trendingBlock = document.querySelector(`.${trendBlock}`);
     
     if (document.documentElement.clientWidth < 550) {
         const promise = new Promise(function(resolve, reject) {
@@ -28,7 +27,7 @@ function header({headerBody, headerSearchPanel, headerInputField, headerLogo, he
             inputField.classList.add(`${headerInputField}--hidden`);
         }
         if (document.documentElement.clientWidth >= 550 && logo.classList.contains(`${headerLogo}--hidden`)) {
-            const promise = new Promise((resolve, reject) => {
+            new Promise((resolve, reject) => {
                 searchPanel.classList.remove(`${headerSearchPanel}--full-width`);
                 resolve();
             }).then(() => {
@@ -44,19 +43,6 @@ function header({headerBody, headerSearchPanel, headerInputField, headerLogo, he
         }
     });
 
-    // button.addEventListener('click', e => {
-    //     e.preventDefault();
-    //     if (inputField.classList.contains(`${headerInputField}--hidden`)) {
-    //         const promise = new Promise((resolve, reject) => {
-    //             logo.classList.add(`${headerLogo}--hidden`);
-    //             resolve();
-    //         }).then (() => {
-    //             searchPanel.classList.add(`${headerSearchPanel}--full-width`);
-    //         }).then(() => {
-    //             inputField.classList.remove(`${headerInputField}--hidden`);
-    //         });
-    //     }
-    // });
     request({
         resultsBlock: trendingBlock,
         key: 'nioAXMr2JLhzIQzEJiaabzA1R07XOx8a'
@@ -65,7 +51,7 @@ function header({headerBody, headerSearchPanel, headerInputField, headerLogo, he
     searchPanel.addEventListener('submit', e => {
         e.preventDefault();
         if (inputField.classList.contains(`${headerInputField}--hidden`)) {
-            const promise = new Promise((resolve, reject) => {
+            new Promise((resolve, reject) => {
                 logo.classList.add(`${headerLogo}--hidden`);
                 resolve();
             }).then (() => {
@@ -88,7 +74,7 @@ function header({headerBody, headerSearchPanel, headerInputField, headerLogo, he
 
     window.addEventListener('click', e => {
         if (!e.target.closest(`.${headerSearchPanel}`) && searchPanel.classList.contains(`${headerSearchPanel}--full-width`)) {
-            const promise = new Promise((resolve, reject) => {
+            new Promise((resolve, reject) => {
                 searchPanel.classList.remove(`${headerSearchPanel}--full-width`);
                 resolve();
             }).then(() => {
