@@ -61,6 +61,19 @@ function header({headerBody, headerSearchPanel, headerInputField, headerLogo, se
             });
         }
         if (inputField.value !== '' && inputField.value !== null && !inputField.classList.contains(`${headerInputField}--hidden`)) {
+            if (document.documentElement.clientWidth < 550) {
+                new Promise((resolve, reject) => {
+                    searchPanel.classList.remove(`${headerSearchPanel}--full-width`);
+                    resolve();
+                }).then(() => {
+                    inputField.classList.add(`${headerInputField}--hidden`);
+                }).then (() => {
+                    setTimeout(() => {
+                        logo.classList.remove(`${headerLogo}--hidden`);
+                    }, 500);
+                });
+            }
+    
             document.querySelector('.trending__row').textContent = '';
             document.querySelector('.trending').style.display = 'none';
             document.querySelector('.search-result').classList.remove('search-result--hidden');
